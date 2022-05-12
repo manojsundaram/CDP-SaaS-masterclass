@@ -36,16 +36,16 @@ sudo -u hdfs hdfs dfs -mkdir -p /hive_data/eu_countries/
 sudo -u hdfs hdfs dfs -mkdir -p /hive_data/hr/employees_raw/
 sudo -u hdfs hdfs dfs -mkdir -p /hive_data/hr/employees/
 
-sudo -u hdfs hdfs dfs -put ../data/claims_provider_summary_data.csv /hive_data/claim/
-sudo -u hdfs hdfs dfs -put ../data/claim-savings.csv                /hive_data/cost_savings/
-sudo -u hdfs hdfs dfs -put ../data/tax_2009.csv                     /hive_data/finance/tax_2009/
-sudo -u hdfs hdfs dfs -put ../data/tax_2010.csv                     /hive_data/finance/tax_2010/
-sudo -u hdfs hdfs dfs -put ../data/tax_2015.csv                     /hive_data/finance/tax_2015/
-sudo -u hdfs hdfs dfs -put ../data/eu_countries.csv                 /hive_data/hortoniabank/eu_countries/
-sudo -u hdfs hdfs dfs -put ../data/us_customers_data.csv            /hive_data/hortoniabank/us_customers/
-sudo -u hdfs hdfs dfs -put ../data/ww_customers_data.csv            /hive_data/hortoniabank/ww_customers/
-sudo -u hdfs hdfs dfs -put ../data/consent_master_data_cleaned.csv      /hive_data/consent/
-sudo -u hdfs hdfs dfs -put ../data/eu_countries.csv                     /hive_data/eu_countries/
-sudo -u hdfs hdfs dfs -put ../data/employees_raw.csv                /hive_data/hr/employees_raw/
-sudo -u hdfs hdfs dfs -put ../data/employees.csv                    /hive_data/hr/employees/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/claims_provider_summary_data.csv /hive_data/claim/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/claim-savings.csv                /hive_data/cost_savings/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/tax_2009.csv                     /hive_data/finance/tax_2009/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/tax_2010.csv                     /hive_data/finance/tax_2010/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/tax_2015.csv                     /hive_data/finance/tax_2015/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/eu_countries.csv                 /hive_data/hortoniabank/eu_countries/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/us_customers_data.csv            /hive_data/hortoniabank/us_customers/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/ww_customers_data.csv            /hive_data/hortoniabank/ww_customers/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/consent_master_data_cleaned.csv      /hive_data/consent/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/eu_countries.csv                     /hive_data/eu_countries/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/employees_raw.csv                /hive_data/hr/employees_raw/
+sudo -u hdfs hdfs dfs -put /root/CDP-SaaS-masterclass/data/employees.csv                    /hive_data/hr/employees/
 sudo -u hdfs hdfs dfs -chown -R hive:hive /hive_data/
