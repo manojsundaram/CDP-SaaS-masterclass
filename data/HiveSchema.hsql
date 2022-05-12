@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS hortoniabank LOCATION '/hive_data/hortoniabank';
+CREATE DATABASE IF NOT EXISTS worldwidebank;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS hortoniabank.ww_customers(
                                     Gender               STRING
