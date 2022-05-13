@@ -10,9 +10,10 @@ rm -rf $WKDIR/CDP-SaaS-masterclass
 
 git clone https://github.com/manojsundaram/CDP-SaaS-masterclass
 
-beeline -u ${beeline_url} -f $WKDIR/CDP-SaaS-masterclass/data/dropall_db.hsql
+echo "Cleanup tables..."
+beeline --silent=true -u ${beeline_url} -f $WKDIR/CDP-SaaS-masterclass/data/dropall_db.hsql
+
+
+echo "Setup tables..."
 beeline -u ${beeline_url} -f $WKDIR/CDP-SaaS-masterclass/data/HiveSchema.hsql
 
-if [ "${enable_hive_acid}" = true  ]; then
-  beeline -u ${beeline_url} -n hive -f $WKDIR/CDP-SaaS-masterclass/data/TransSchema.hsql
-fi

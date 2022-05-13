@@ -1,7 +1,6 @@
-CREATE DATABASE IF NOT EXISTS hortoniabank LOCATION '/hive_data/hortoniabank';
-CREATE DATABASE IF NOT EXISTS worldwidebank;
+CREATE DATABASE IF NOT EXISTS worldwidebank LOCATION '/hive_data/worldwidebank';
 
-CREATE EXTERNAL TABLE IF NOT EXISTS hortoniabank.ww_customers(
+CREATE EXTERNAL TABLE IF NOT EXISTS worldwidebank.ww_customers(
                                     Gender               STRING
                                   , Title                STRING
                                   , GivenName            STRING
@@ -45,10 +44,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS hortoniabank.ww_customers(
                                 ) ROW FORMAT DELIMITED
                                   FIELDS TERMINATED BY ','
                                   STORED AS TEXTFILE
-                                  LOCATION '/hive_data/hortoniabank/ww_customers'
+                                  LOCATION '/hive_data/worldwidebank/ww_customers'
 				  tblproperties("skip.header.line.count"="1");
 
-CREATE EXTERNAL TABLE IF NOT EXISTS hortoniabank.us_customers(
+CREATE EXTERNAL TABLE IF NOT EXISTS worldwidebank.us_customers(
                                     Number               STRING
                                   , Gender               STRING
                                   , Title                STRING
@@ -91,17 +90,17 @@ CREATE EXTERNAL TABLE IF NOT EXISTS hortoniabank.us_customers(
                                  ) ROW FORMAT DELIMITED
                                    FIELDS TERMINATED BY ','
                                    STORED AS TEXTFILE
-                                   LOCATION '/hive_data/hortoniabank/us_customers'
+                                   LOCATION '/hive_data/worldwidebank/us_customers'
 				   tblproperties("skip.header.line.count"="1");
 
-CREATE EXTERNAL TABLE IF NOT EXISTS hortoniabank.eu_countries (
+CREATE EXTERNAL TABLE IF NOT EXISTS worldwidebank.eu_countries (
                                     CountryName STRING
                                   , CountryCode STRING
                                   , Region STRING
                                  ) ROW FORMAT DELIMITED
                                    FIELDS TERMINATED BY ','
                                    STORED AS TEXTFILE
-                                   LOCATION '/hive_data/hortoniabank/eu_countries';
+                                   LOCATION '/hive_data/worldwidebank/eu_countries';
 
 
 CREATE DATABASE IF NOT EXISTS finance LOCATION '/hive_data/finance';
@@ -254,7 +253,5 @@ CREATE VIEW IF NOT EXISTS worldwidebank.gb_customers AS SELECT * FROM  worldwide
 CREATE VIEW IF NOT EXISTS worldwidebank.fr_customers AS SELECT * FROM  worldwidebank.ww_customers where country='FR';
 CREATE VIEW IF NOT EXISTS worldwidebank.de_customers AS SELECT * FROM  worldwidebank.ww_customers where country='DE';
 
-CREATE function aes_encrypt AS 'org.apache.hadoop.hive.ql.udf.generic.GenericUDFAesEncrypt' USING JAR  'hdfs:///apps/hive/share/udfs/hive-exec.jar'; 
-CREATE function aes_decrypt AS 'org.apache.hadoop.hive.ql.udf.generic.GenericUDFAesDecrypt' USING JAR 'hdfs:///apps/hive/share/udfs/hive-exec.jar'; 
 
 create table hr.employees_encrypted as select id, name, age, base64(aes_encrypt(phone,'1234567890123456')) as phone, base64(aes_encrypt(email,'1234567890123456')) as email from hr.employees;
